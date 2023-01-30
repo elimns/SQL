@@ -1,0 +1,30 @@
+/** create a store database **/
+
+CREATE TABLE store (id INTEGER primary key, item TEXT, price INTEGER, category TEXT, color TEXT);
+
+INSERT INTO store VALUES 
+(1, "iphone 14", 1200, "phone", "blue"),
+(2, "samsung s23", 1600, "phone", "black"),
+(3, "macbook pro", 2300, "laptop", "space gray"),
+(4, "echo dot", 100, "home device", "black"),
+(5, "ipad", 800, "tablet", "space gray"),
+(6, "iphone 14 pro max", 1500, "phone", "black"),
+(7, "iphone 8", 900, "phone","gold"),
+(8, "ipad mini", 850, "tablet", "blue"), 
+(9, "amazon fire hd", 200, "tablet", "black"),
+(10, "sony a7", 1400, "camera", "black"),
+(11, "macbook air", 2200, "laptop", "gold"),
+(12, "ihome", 200, "home device", "white"),
+(13, "nikon 3100", 1900, "camera", "black"),
+(14, "motorola z", 600, "phone", "purple"),
+(15, "canon 5d", 900, "camera", "black");
+
+
+-display the database 
+SELECT * FROM store;
+
+--what are items under 1000? display a table arranged from the highest to lowest.
+SELECT id, item, price FROM store WHERE price <=1000 ORDER BY price desc; 
+
+--what is the average price of each type of gadget?
+SELECT category, AVG(price) FROM store GROUP BY category;
