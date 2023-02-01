@@ -1,5 +1,6 @@
-/* Create table about the people and what they do here */
+-- Querying a database with multiple tables to obtain the information listed below.
 
+/* Create table about the people and what they do here */
 
 CREATE TABLE drivers 
 (id INTEGER PRIMARY KEY,
