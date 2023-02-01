@@ -36,7 +36,7 @@ SELECT product, MIN(price)
             ORDER BY price ASC
                 LIMIT 1
                 
- or
+ /* alternative option */
  
 SELECT DISTINCT Product, price
     FROM JanSales
