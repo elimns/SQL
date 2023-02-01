@@ -9,26 +9,26 @@ age INTEGER,
 teams INTEGER);
 
 INSERT INTO drivers VALUES 
-(1, "Max Verstappen", 1, 25, 1),
-(2, "Sergio Perez", 11, 32, 1),
-(3, "Charles Leclerc", 16, 24, 2),
-(4, "Carlos Sainz", 55, 27, 2),
-(5, "Lewis Hamilton", 44, 37, 3),
-(6, "George Russell", 63, 24, 3),
-(7, "Pierre Gasly", 10, 26, 7),
-(8, "Yuki Tsunoda", 22, 21, 7),
-(9, "Fernando Alonso", 14, 40, 5),
-(10, "Esteban Ocon" , 31, 25, 5),
-(11, "Alex Albon", 23, 26, 8),
-(12, "Nicholas Latifi", 6, 26, 8),
-(13, "Sebastian Vettel", 5, 34, 10),
-(14, "Lance Stroll", 18, 23, 10),
-(15, "Daniel Ricciardo", 3, 32, 4),
-(16, "Lando Norris", 4, 22, 4),
-(17, "Kevin Magnussen", 20, 29, 9),
-(18, "Mick Schumacher", 47, 23, 9),
-(19, "Valterri Bottas", 77, 32, 6),
-(20, "Zhou Guanyu", 24, 22, 6);
+    (1, "Max Verstappen", 1, 25, 1),
+    (2, "Sergio Perez", 11, 32, 1),
+    (3, "Charles Leclerc", 16, 24, 2),
+    (4, "Carlos Sainz", 55, 27, 2),
+    (5, "Lewis Hamilton", 44, 37, 3),
+    (6, "George Russell", 63, 24, 3),
+    (7, "Pierre Gasly", 10, 26, 7),
+    (8, "Yuki Tsunoda", 22, 21, 7),
+    (9, "Fernando Alonso", 14, 40, 5),
+    (10, "Esteban Ocon" , 31, 25, 5),
+    (11, "Alex Albon", 23, 26, 8),
+    (12, "Nicholas Latifi", 6, 26, 8),
+    (13, "Sebastian Vettel", 5, 34, 10),
+    (14, "Lance Stroll", 18, 23, 10),
+    (15, "Daniel Ricciardo", 3, 32, 4),
+    (16, "Lando Norris", 4, 22, 4),
+    (17, "Kevin Magnussen", 20, 29, 9),
+    (18, "Mick Schumacher", 47, 23, 9),
+    (19, "Valterri Bottas", 77, 32, 6),
+    (20, "Zhou Guanyu", 24, 22, 6);
 
 
 CREATE TABLE constructors (id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -36,75 +36,77 @@ c_name TEXT,
 c_id INTEGER);
 
 INSERT INTO constructors (c_name, c_id) VALUES
-("Red Bull", 1);
+    ("Red Bull", 1);
 INSERT INTO constructors (c_name, c_id) VALUES
-("Ferrari", 2);
+    ("Ferrari", 2);
 INSERT INTO constructors (c_name, c_id) VALUES
-("Mercedes", 3);
+    ("Mercedes", 3);
 INSERT INTO constructors (c_name, c_id) VALUES
-("McLaren", 4);
+    ("McLaren", 4);
 INSERT INTO constructors (c_name, c_id) VALUES
-("Alpine", 5);
+    ("Alpine", 5);
 INSERT INTO constructors (c_name, c_id) VALUES
-("Alfa Romeo", 6);
+    ("Alfa Romeo", 6);
 INSERT INTO constructors (c_name, c_id) VALUES
-("Alpha Tauri", 7);
+    ("Alpha Tauri", 7);
 INSERT INTO constructors (c_name, c_id) VALUES
-("Williams", 8);
+    ("Williams", 8);
 INSERT INTO constructors (c_name, c_id) VALUES
-("Haas", 9);
+    ("Haas", 9);
 INSERT INTO constructors (c_name, c_id) VALUES
-("Aston Martin", 10);
+    ("Aston Martin", 10);
 
 CREATE TABLE driver_number_tandems (id INTEGER PRIMARY KEY, 
 driver1 INTEGER, 
 driver2 INTEGER);
 INSERT INTO driver_number_tandems (driver1, driver2) VALUES
-(1,11),
-(3, 4),
-(16, 55),
-(44, 63), 
-(77, 24), 
-(23, 6), 
-(20, 47), 
-(10, 22),
-(5, 18),
-(14, 31);
+    (1,11),
+    (3, 4),
+    (16, 55),
+    (44, 63), 
+    (77, 24), 
+    (23, 6), 
+    (20, 47), 
+    (10, 22),
+    (5, 18),
+    (14, 31);
 
 CREATE TABLE team_boss (id INTEGER PRIMARY KEY, car_id INTEGER, principal_name TEXT);
 INSERT INTO team_boss (car_id, principal_name) VALUES
-(1, "Christian Horner"),
-(2, "Mattia Binotto"), 
-(3, "Toto Wolff"),
-(4, "Zak Brown"),
-(5, "Otmar Szafnauer"),
-(6, "Fred Vasseur"),
-(7, "Franz Tost"),
-(8, "Jost Capito"),
-(9, "Gunther Steiner"),
-(10, "Mike Krack");
+    (1, "Christian Horner"),
+    (2, "Mattia Binotto"), 
+    (3, "Toto Wolff"),
+    (4, "Zak Brown"),
+    (5, "Otmar Szafnauer"),
+    (6, "Fred Vasseur"),
+    (7, "Franz Tost"),
+    (8, "Jost Capito"),
+    (9, "Gunther Steiner"),
+    (10, "Mike Krack");
 
 /*Which team does each driver belong to?*/
 
-SELECT drivers.name, constructors.c_name AS team FROM drivers
-JOIN constructors
-ON drivers.teams = constructors.c_id;
+    SELECT drivers.name, constructors.c_name AS team 
+        FROM drivers
+            JOIN constructors
+                ON drivers.teams = constructors.c_id;
 
 /*Create a table reflecting each team's name, drivers and principal*/
 
-SELECT constructors.c_name as Team, d1.name as Driver1, d2.name as Driver2, team_boss.principal_name AS Boss
-    FROM driver_number_tandems AS DNT
-    JOIN drivers AS D1
-    ON DNT.driver1 = d1.driver_number
-    JOIN drivers AS D2
-    ON DNT.driver2 = d2.driver_number
-    JOIN constructors
-    ON constructors.c_id = team_boss.car_id
-    JOIN team_boss
-    ON team_boss.car_id = d1.teams;
+    SELECT constructors.c_name as Team, d1.name as Driver1, d2.name as Driver2, team_boss.principal_name AS Boss
+        FROM driver_number_tandems AS DNT
+            JOIN drivers AS D1
+                ON DNT.driver1 = d1.driver_number
+            JOIN drivers AS D2
+                ON DNT.driver2 = d2.driver_number
+            JOIN constructors
+                ON constructors.c_id = team_boss.car_id
+            JOIN team_boss
+                ON team_boss.car_id = d1.teams;
     
     
     
     
     
 
+    
