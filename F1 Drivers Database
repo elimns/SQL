@@ -55,6 +55,7 @@ INSERT INTO constructors (c_name, c_id) VALUES
     ("Haas", 9);
 INSERT INTO constructors (c_name, c_id) VALUES
     ("Aston Martin", 10);
+    
 
 CREATE TABLE driver_number_tandems (id INTEGER PRIMARY KEY, 
 driver1 INTEGER, 
@@ -70,6 +71,7 @@ INSERT INTO driver_number_tandems (driver1, driver2) VALUES
     (10, 22),
     (5, 18),
     (14, 31);
+
 
 CREATE TABLE team_boss (id INTEGER PRIMARY KEY, car_id INTEGER, principal_name TEXT);
 INSERT INTO team_boss (car_id, principal_name) VALUES
