@@ -25,12 +25,38 @@ time_signature integer NOT NULL )
 
 /* WORK IN PROGRESS */
 
--- QUERYING THE DATA
--- find the most popular artist, ranked by their total popularity points across all songs
+/* QUERYING THE DATA */
 
--- find which artist has the average shortest total music in minutes 
+-- finding the top 20 artists with the most popularity points 
 
--- What are the top 10 songs with the fastest tempo with durations below above average
+SELECT artist_name, SUM(popularity) fame_points
+    FROM BIT_DB.spotifydata
+        GROUP BY artist_name
+            ORDER BY fame_points desc
+                LIMIT 10
 
+-- finding the average duration of songs for each artists in minutes; present the data from shortest to longest avg time
+
+SELECT artist_name, AVG(duration_ms)/60 time
+    FROM BIT_DB.Spotifydata
+        GROUP BY artist_name
+            ORDER BY time asc
+            
+
+- which artist have the most 
+
+
+
+-- Calculate the average popularity for the artists in the Spotify data table. Then, for every artist with an average popularity of 90 or above, show their name, their average popularity, and label them as a “Top Star”.
+
+WITH cte AS(
+    SELECT artist_name, AVG(popularity) ave
+        FROM Spotifydata
+            GROUP BY artist_name
+)
+SELECT artist_name, ave, 'Top Star' AS tag
+    FROM cte
+        WHERE ave>=90
+            
 
 
