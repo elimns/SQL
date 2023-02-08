@@ -23,7 +23,7 @@ tempo decimal(6,3) NOT NULL,
 duration_ms integer NOT NULL,
 time_signature integer NOT NULL )
 
-/* WORK IN PROGRESS */
+
 
 /* QUERYING THE DATA */
 
@@ -42,9 +42,6 @@ SELECT artist_name, AVG(duration_ms)/60 time
         GROUP BY artist_name
             ORDER BY time asc
             
-
-- which artist have the most 
-
 
 
 -- Calculate the average popularity for the artists in the Spotify data table. Then, for every artist with an average popularity of 90 or above, show their name, their average popularity, and label them as a “Top Star”.
