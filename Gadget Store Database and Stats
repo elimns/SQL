@@ -21,10 +21,20 @@ INSERT INTO store VALUES
 
 
 -display the database 
-SELECT * FROM store;
+  SELECT * 
+    FROM store;
 
 --what are items under 1000? display a table arranged from the highest to lowest.
-SELECT id, item, price FROM store WHERE price <=1000 ORDER BY price desc; 
+  SELECT id, 
+      item, 
+      price 
+          FROM store 
+              WHERE price <=1000 
+                  ORDER BY price desc; 
 
 --what is the average price of each type of gadget?
-SELECT category, AVG(price) FROM store GROUP BY category;
+  SELECT category, 
+      AVG(price) 
+          FROM store 
+              GROUP BY category;
+
