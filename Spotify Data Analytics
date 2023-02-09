@@ -23,9 +23,7 @@ tempo decimal(6,3) NOT NULL,
 duration_ms integer NOT NULL,
 time_signature integer NOT NULL )
 
-
-
-/* QUERYING THE DATA */
+-- QUERYING THE DATA 
 
 -- finding the top 20 artists with the most popularity points 
 
