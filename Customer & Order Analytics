@@ -126,6 +126,10 @@ SELECT DISTINCT product, SUM(quantity*price) AS rev
             GROUP BY product
                 ORDER BY rev desc
                     LIMIT 5
+                    
+                    
+                    
+                    
 
 
 
